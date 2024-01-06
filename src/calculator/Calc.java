@@ -1007,7 +1007,15 @@ public class Calc extends javax.swing.JFrame {
             ans = num1*num2;
         }
         if(operator=="/"){
-            ans = num1/num2;
+            
+            // Check for division by zero
+            if (num2 != 0) {
+                ans = num1 / num2;
+            } else {
+            JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
+            // Handle the error as needed
+            return;
+            }
         }
         
         if(ans>=10000.1){
@@ -1135,7 +1143,15 @@ public class Calc extends javax.swing.JFrame {
             ans = num1*num2;
         }
         if(operator=="/"){
-            ans = num1/num2;
+            
+            // Check for division by zero
+            if (num2 != 0) {
+                ans = num1 / num2;
+            } else {
+            JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
+            // Handle the error as needed
+            return;
+            }
         }
         
         if(ans>=1000.1){
@@ -1197,7 +1213,7 @@ public class Calc extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
             // Handle the error as needed
             return;
-        }
+            }
         }
 
         if(ans>=100.1){
