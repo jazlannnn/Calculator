@@ -1128,11 +1128,10 @@ public class Calc extends javax.swing.JFrame {
 
     private void bequal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal1ActionPerformed
         
-        
         num2 = Double.parseDouble(t2.getText());
 
         double ans=0;
-
+       
         if(operator=="+"){
             ans = num1+num2;
         }
@@ -1161,7 +1160,7 @@ public class Calc extends javax.swing.JFrame {
         if(ans<0){
             JOptionPane.showMessageDialog(null,"The answer is below 0 !! Make sure that the answer is only in your syllabus.");
         }
-
+        
         t2.setText(""+ans);
 
         operator=null;
@@ -1190,8 +1189,25 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_bdivActionPerformed
 
     private void bequalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequalActionPerformed
+        
+        //num1 = Double.parseDouble(t1.getText());
+        String inputText = t1.getText();{
+       
+        // Print the values for debugging
+        System.out.println("num1: " + num1);
+        System.out.println("inputText: " + inputText);
 
         num2 = Double.parseDouble(t1.getText());
+        // Check if num1 is equal to the input text
+        if (num2==0) {
+            JOptionPane.showMessageDialog(null, "P");
+            return;  // exit the method if num1 is equal to the input text
+        }
+    
+    }
+
+        
+
 
         double ans=0;
         
@@ -1251,6 +1267,8 @@ public class Calc extends javax.swing.JFrame {
     private void bclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclearActionPerformed
 
         t1.setText("");
+        num1=0;
+        num2=0;
     }//GEN-LAST:event_bclearActionPerformed
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
