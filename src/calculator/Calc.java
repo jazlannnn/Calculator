@@ -908,6 +908,11 @@ public class Calc extends javax.swing.JFrame {
 
     private void badd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd2ActionPerformed
         
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+        
         num1 = Double.parseDouble(t3.getText());
         t3.setText("");
         operator="+";
@@ -937,6 +942,11 @@ public class Calc extends javax.swing.JFrame {
 
     private void bdiv2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdiv2ActionPerformed
         
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+        
         num1 = Double.parseDouble(t3.getText());
         t3.setText("");
         operator="/";
@@ -947,6 +957,7 @@ public class Calc extends javax.swing.JFrame {
         t3.setText("");
         num1=0;
         num2=0;
+        operator=null;
     }//GEN-LAST:event_bclear2ActionPerformed
 
     private void b002ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b002ActionPerformed
@@ -976,6 +987,11 @@ public class Calc extends javax.swing.JFrame {
 
     private void bsub2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsub2ActionPerformed
         
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+        
         num1 = Double.parseDouble(t3.getText());
         t3.setText("");
         operator="-";
@@ -987,6 +1003,11 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b005ActionPerformed
 
     private void bmul2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmul2ActionPerformed
+        
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
         
         num1 = Double.parseDouble(t3.getText());
         t3.setText("");
@@ -1008,8 +1029,7 @@ public class Calc extends javax.swing.JFrame {
             return;  // exit the method if num1 is equal to the input text
             }
     
-        }
-        
+        }   
 
         double ans=0;
 
@@ -1059,6 +1079,11 @@ public class Calc extends javax.swing.JFrame {
 
     private void badd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd1ActionPerformed
         
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+        
         num1 = Double.parseDouble(t2.getText());
         t2.setText("");
         operator="+";
@@ -1087,6 +1112,11 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b08ActionPerformed
 
     private void bdiv1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdiv1ActionPerformed
+
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
         
         num1 = Double.parseDouble(t2.getText());
         t2.setText("");
@@ -1098,6 +1128,7 @@ public class Calc extends javax.swing.JFrame {
         t2.setText("");
         num1=0;
         num2=0;
+        operator=null;
     }//GEN-LAST:event_bclear1ActionPerformed
 
     private void b02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b02ActionPerformed
@@ -1126,6 +1157,11 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b09ActionPerformed
 
     private void bsub1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsub1ActionPerformed
+
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
         
         num1 = Double.parseDouble(t2.getText());
         t2.setText("");
@@ -1138,7 +1174,12 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b05ActionPerformed
 
     private void bmul1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmul1ActionPerformed
-        
+
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+
         num1 = Double.parseDouble(t2.getText());
         t2.setText("");
         operator="*";
@@ -1159,8 +1200,7 @@ public class Calc extends javax.swing.JFrame {
             return;  // exit the method if num1 is equal to the input text
             }
     
-        }
-        
+        }        
 
         double ans=0;
        
@@ -1214,7 +1254,12 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b9ActionPerformed
 
     private void bdivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdivActionPerformed
-
+        
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+        
         num1 = Double.parseDouble(t1.getText());
         t1.setText("");
         operator="/";
@@ -1274,7 +1319,12 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_bequalActionPerformed
 
     private void baddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baddActionPerformed
-
+        
+         if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+          
         num1 = Double.parseDouble(t1.getText());
         t1.setText("");
         operator="+";
@@ -1297,6 +1347,7 @@ public class Calc extends javax.swing.JFrame {
         t1.setText("");
         num1=0;
         num2=0;
+        operator=null;
     }//GEN-LAST:event_bclearActionPerformed
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
@@ -1311,6 +1362,11 @@ public class Calc extends javax.swing.JFrame {
 
     private void bsubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsubActionPerformed
 
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+        
         num1 = Double.parseDouble(t1.getText());
         t1.setText("");
         operator="-";
@@ -1323,6 +1379,11 @@ public class Calc extends javax.swing.JFrame {
 
     private void bmulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmulActionPerformed
 
+        if (operator != null) {
+            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
+            return;  // exit the method if the operator is already set
+        }
+        
         num1 = Double.parseDouble(t1.getText());
         t1.setText("");
         operator="*";
