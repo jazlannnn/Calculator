@@ -945,6 +945,8 @@ public class Calc extends javax.swing.JFrame {
     private void bclear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclear2ActionPerformed
         
         t3.setText("");
+        num1=0;
+        num2=0;
     }//GEN-LAST:event_bclear2ActionPerformed
 
     private void b002ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b002ActionPerformed
@@ -993,7 +995,21 @@ public class Calc extends javax.swing.JFrame {
 
     private void bequal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal2ActionPerformed
         
+        String inputText = t3.getText();{
+       
+        // Print the values for debugging
+        System.out.println("num1: " + num1);
+        System.out.println("inputText: " + inputText);
+
         num2 = Double.parseDouble(t3.getText());
+        // Check if num1 is equal to the input text
+        if (num1==0) {
+            JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
+            return;  // exit the method if num1 is equal to the input text
+            }
+    
+        }
+        
 
         double ans=0;
 
@@ -1080,6 +1096,8 @@ public class Calc extends javax.swing.JFrame {
     private void bclear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclear1ActionPerformed
         
         t2.setText("");
+        num1=0;
+        num2=0;
     }//GEN-LAST:event_bclear1ActionPerformed
 
     private void b02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b02ActionPerformed
@@ -1128,7 +1146,21 @@ public class Calc extends javax.swing.JFrame {
 
     private void bequal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal1ActionPerformed
         
+        String inputText = t2.getText();{
+       
+        // Print the values for debugging
+        System.out.println("num1: " + num1);
+        System.out.println("inputText: " + inputText);
+
         num2 = Double.parseDouble(t2.getText());
+        // Check if num1 is equal to the input text
+        if (num1==0) {
+            JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
+            return;  // exit the method if num1 is equal to the input text
+            }
+    
+        }
+        
 
         double ans=0;
        
@@ -1190,7 +1222,6 @@ public class Calc extends javax.swing.JFrame {
 
     private void bequalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequalActionPerformed
         
-        //num1 = Double.parseDouble(t1.getText());
         String inputText = t1.getText();{
        
         // Print the values for debugging
@@ -1199,15 +1230,12 @@ public class Calc extends javax.swing.JFrame {
 
         num2 = Double.parseDouble(t1.getText());
         // Check if num1 is equal to the input text
-        if (num2==0) {
-            JOptionPane.showMessageDialog(null, "P");
+        if (num1==0) {
+            JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
             return;  // exit the method if num1 is equal to the input text
-        }
+            }
     
-    }
-
-        
-
+        }
 
         double ans=0;
         
