@@ -1054,12 +1054,14 @@ public class Calc extends javax.swing.JFrame {
             }
         }
         
-        if(ans>=10000.1){
-            JOptionPane.showMessageDialog(null,"The answer is above 10000 !! Make sure that the answer is only in your syllabus.");
+         if ((ans >= 0.1 && ans <= 1.0) || (ans >= 1.0 && ans % 1 == 0)) {
+        } else {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+            // You may choose to clear the text field or handle it differently
         }
         
-        if(ans<0){
-            JOptionPane.showMessageDialog(null,"The answer is below 0 !! Make sure that the answer is only in your syllabus.");
+        if(ans>=10000.1){
+            JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
 
         t3.setText(""+ans);
@@ -1078,6 +1080,13 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b06ActionPerformed
 
     private void badd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd1ActionPerformed
+
+
+        /*if(Double.parseDouble(t2.getText()) >= 0.9){
+        JOptionPane.showMessageDialog(null, "You have exceed 1.0. Please put number below than 1.0 !!");
+            return;  // exit the method if the operator is already set
+        }*/
+        
         
         if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
@@ -1206,12 +1215,14 @@ public class Calc extends javax.swing.JFrame {
        
         if(operator=="+"){
             ans = num1+num2;
+            
         }
         if(operator=="-"){
             ans = num1-num2;
         }
         if(operator=="*"){
             ans = num1*num2;
+            
         }
         if(operator=="/"){
             
@@ -1225,13 +1236,27 @@ public class Calc extends javax.swing.JFrame {
             }
         }
         
-        if(ans>=1000.1){
-            JOptionPane.showMessageDialog(null,"The answer is above 1000 !! Make sure that the answer is only in your syllabus.");
+        
+        if ((ans >= 0.1 && ans <= 1.0) || (ans >= 1.0 && ans % 1 == 0)) {
+            
+            double remainder = ans; // Get the remainder after division by 1
+            double answer = Math.floor(remainder * 10) / 10; // Extract the first decimal place
+            // Format the answer to display only one decimal point
+            String formattedAnswer = String.format("%.1f", answer);
+            t1.setText(formattedAnswer);
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+            // You may choose to clear the text field or handle it differently
         }
         
-        if(ans<0){
-            JOptionPane.showMessageDialog(null,"The answer is below 0 !! Make sure that the answer is only in your syllabus.");
+        if(ans>=1000.1){
+            JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
+        
+        /*if(ans<0){
+            JOptionPane.showMessageDialog(null,"The answer is below 0 !! Make sure that the answer is only in your syllabus.");
+        }*/
         
         t2.setText(""+ans);
 
@@ -1244,8 +1269,10 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b04ActionPerformed
 
     private void bdotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdotActionPerformed
-
-        t1.setText(t1.getText()+".");
+        
+        JOptionPane.showMessageDialog(null, "This operation is not in your syllabus. Please choose another operation !! ");
+            return;  // exit
+        //t1.setText(t1.getText()+".");
     }//GEN-LAST:event_bdotActionPerformed
 
     private void b9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9ActionPerformed
@@ -1254,15 +1281,18 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b9ActionPerformed
 
     private void bdivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdivActionPerformed
-        
-        if (operator != null) {
+               
+        JOptionPane.showMessageDialog(null, "This operation is not in your syllabus. Please choose another operation !! ");
+            return;  // exit
+            
+        /*if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
         
         num1 = Double.parseDouble(t1.getText());
         t1.setText("");
-        operator="/";
+        operator="/";*/
     }//GEN-LAST:event_bdivActionPerformed
 
     private void bequalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequalActionPerformed
@@ -1306,11 +1336,11 @@ public class Calc extends javax.swing.JFrame {
         }
 
         if(ans>=100.1){
-            JOptionPane.showMessageDialog(null,"The answer is above 100 !! Make sure that the answer is only in your syllabus.");
+            JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
         
         if(ans<0){
-            JOptionPane.showMessageDialog(null,"The answer is below 0 !! Make sure that the answer is only in your syllabus.");
+            JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
 
         t1.setText(""+ans);
@@ -1319,6 +1349,11 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_bequalActionPerformed
 
     private void baddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baddActionPerformed
+              
+        if (Double.parseDouble(t1.getText()) == 0) {
+            JOptionPane.showMessageDialog(null, "Please start with number 1 ");
+            return;  // exit the method if the operator is already set
+        }
         
          if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
@@ -1361,7 +1396,12 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b3ActionPerformed
 
     private void bsubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsubActionPerformed
-
+        
+        if (Double.parseDouble(t1.getText()) == 0) {
+            JOptionPane.showMessageDialog(null, "Please start with number 1 ");
+            return;  // exit the method if the operator is already set
+        }
+        
         if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
@@ -1379,14 +1419,18 @@ public class Calc extends javax.swing.JFrame {
 
     private void bmulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmulActionPerformed
 
-        if (operator != null) {
+        
+        JOptionPane.showMessageDialog(null, "This operation is not in your syllabus. Please choose another operation !! ");
+            return;  // exit
+            
+        /*if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
         
         num1 = Double.parseDouble(t1.getText());
         t1.setText("");
-        operator="*";
+        operator="*";*/
     }//GEN-LAST:event_bmulActionPerformed
 
     private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
