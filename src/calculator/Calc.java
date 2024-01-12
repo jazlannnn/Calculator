@@ -13,9 +13,10 @@ import java.math.BigDecimal;
  * @author Jazlan
  */
 public class Calc extends javax.swing.JFrame {
-    
-    double num1=0, num2=0;
-    String operator=null;
+
+    double num1 = 0, num2 = 0;
+    String operator = null;
+
     /**
      * Creates new form Calc
      */
@@ -889,201 +890,201 @@ public class Calc extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-         jTabbedPane1.setSelectedIndex(0);
+        jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-         jTabbedPane1.setSelectedIndex(1);
+
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-         jTabbedPane1.setSelectedIndex(2);
+
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void b006ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b006ActionPerformed
-        
-        t3.setText(t3.getText()+"6");
+
+        t3.setText(t3.getText() + "6");
     }//GEN-LAST:event_b006ActionPerformed
 
     private void badd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd2ActionPerformed
-        
+
         if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-        
+
         num1 = Double.parseDouble(t3.getText());
         t3.setText("");
-        operator="+";
+        operator = "+";
     }//GEN-LAST:event_badd2ActionPerformed
 
     private void b001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b001ActionPerformed
-        
-        t3.setText(t3.getText()+"1");
+
+        t3.setText(t3.getText() + "1");
     }//GEN-LAST:event_b001ActionPerformed
 
     private void b000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b000ActionPerformed
-        
-        t3.setText(t3.getText()+"0");
+
+        t3.setText(t3.getText() + "0");
     }//GEN-LAST:event_b000ActionPerformed
 
     private void bback2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bback2ActionPerformed
-        
-        String str= t3.getText();
-        
-        t3.setText(str.substring(0,str.length()-1));
+
+        String str = t3.getText();
+
+        t3.setText(str.substring(0, str.length() - 1));
     }//GEN-LAST:event_bback2ActionPerformed
 
     private void b008ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b008ActionPerformed
-        
-        t3.setText(t3.getText()+"8");
+
+        t3.setText(t3.getText() + "8");
     }//GEN-LAST:event_b008ActionPerformed
 
     private void bdiv2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdiv2ActionPerformed
-        
+
         if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-        
+
         num1 = Double.parseDouble(t3.getText());
         t3.setText("");
-        operator="/";
+        operator = "/";
     }//GEN-LAST:event_bdiv2ActionPerformed
 
     private void bclear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclear2ActionPerformed
-        
+
         t3.setText("");
-        num1=0;
-        num2=0;
-        operator=null;
+        num1 = 0;
+        num2 = 0;
+        operator = null;
     }//GEN-LAST:event_bclear2ActionPerformed
 
     private void b002ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b002ActionPerformed
-        
-        t3.setText(t3.getText()+"2");
+
+        t3.setText(t3.getText() + "2");
     }//GEN-LAST:event_b002ActionPerformed
 
     private void b007ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b007ActionPerformed
-        
-        t3.setText(t3.getText()+"7");
+
+        t3.setText(t3.getText() + "7");
     }//GEN-LAST:event_b007ActionPerformed
 
     private void bdot2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdot2ActionPerformed
-        
-        t3.setText(t3.getText()+".");
+
+        t3.setText(t3.getText() + ".");
     }//GEN-LAST:event_bdot2ActionPerformed
 
     private void b003ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b003ActionPerformed
-        
-        t3.setText(t3.getText()+"3");
+
+        t3.setText(t3.getText() + "3");
     }//GEN-LAST:event_b003ActionPerformed
 
     private void b009ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b009ActionPerformed
-        
-        t3.setText(t3.getText()+"9");
+
+        t3.setText(t3.getText() + "9");
     }//GEN-LAST:event_b009ActionPerformed
 
     private void bsub2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsub2ActionPerformed
-        
+
         if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-        
+
         num1 = Double.parseDouble(t3.getText());
         t3.setText("");
-        operator="-";
+        operator = "-";
     }//GEN-LAST:event_bsub2ActionPerformed
 
     private void b005ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b005ActionPerformed
-        
-        t3.setText(t3.getText()+"5");
+
+        t3.setText(t3.getText() + "5");
     }//GEN-LAST:event_b005ActionPerformed
 
     private void bmul2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmul2ActionPerformed
-        
+
         if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-        
+
         num1 = Double.parseDouble(t3.getText());
         t3.setText("");
-        operator="*";
+        operator = "*";
     }//GEN-LAST:event_bmul2ActionPerformed
 
     private void bequal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal2ActionPerformed
-        
-        String inputText = t3.getText();{
-       
-        // Print the values for debugging
-        System.out.println("num1: " + num1);
-        System.out.println("inputText: " + inputText);
 
-        num2 = Double.parseDouble(t3.getText());
-        // Check if num1 is equal to the input text
-        if (num1==0) {
-            JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
-            return;  // exit the method if num1 is equal to the input text
+        String inputText = t3.getText();
+        {
+
+            // Print the values for debugging
+            System.out.println("num1: " + num1);
+            System.out.println("inputText: " + inputText);
+
+            num2 = Double.parseDouble(t3.getText());
+            // Check if num1 is equal to the input text
+            if (num1 == 0) {
+                JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
+                return;  // exit the method if num1 is equal to the input text
             }
-    
-        }   
 
-        double ans=0;
+        }
 
-        if(operator=="+"){
-            ans = num1+num2;
+        double ans = 0;
+
+        if (operator == "+") {
+            ans = num1 + num2;
         }
-        if(operator=="-"){
-            ans = num1-num2;
+        if (operator == "-") {
+            ans = num1 - num2;
         }
-        if(operator=="*"){
-            ans = num1*num2;
+        if (operator == "*") {
+            ans = num1 * num2;
         }
-        if(operator=="/"){
-            
+        if (operator == "/") {
+
             // Check for division by zero
             if (num2 != 0) {
                 ans = num1 / num2;
             } else {
-            JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
-            // Handle the error as needed
-            return;
+                JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
+                // Handle the error as needed
+                return;
             }
         }
-        
-         String resultString = Double.toString(ans);
+
+        String resultString = Double.toString(ans);
 
 // Check if the result has more than one decimal place
-if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
-    JOptionPane.showMessageDialog(null, "The answer has more than one decimal place! Make sure the result is in the range 0.1 to 0.9 with only one decimal place.");
-    // You may choose to clear the text field or handle it differently
-} else if (!(ans >= 0.1 && ans < 1.0)) {
-    JOptionPane.showMessageDialog(null, "The answer is outside the allowed range! Make sure that the answer is in the range 0.1 to 0.9 with only one decimal place.");
-    // You may choose to clear the text field or handle it differently
-}
-         
-        
-        if(ans>=10000.1){
-            JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+        if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
+            JOptionPane.showMessageDialog(null, "The answer has more than one decimal place! Make sure the result is in the range 0.1 to 0.9 with only one decimal place.");
+            // You may choose to clear the text field or handle it differently
+        } else if (!(ans >= 0.1 && ans < 1.0)) {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range! Make sure that the answer is in the range 0.1 to 0.9 with only one decimal place.");
+            // You may choose to clear the text field or handle it differently
         }
 
-        t3.setText(""+ans);
+        if (ans >= 10000.1) {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+        }
 
-        operator=null;
+        t3.setText("" + ans);
+
+        operator = null;
     }//GEN-LAST:event_bequal2ActionPerformed
 
     private void b004ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b004ActionPerformed
-        
-        t3.setText(t3.getText()+"4");
+
+        t3.setText(t3.getText() + "4");
     }//GEN-LAST:event_b004ActionPerformed
 
     private void b06ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b06ActionPerformed
-        
-        t2.setText(t2.getText()+"6");
+
+        t2.setText(t2.getText() + "6");
     }//GEN-LAST:event_b06ActionPerformed
 
     private void badd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd1ActionPerformed
@@ -1093,38 +1094,36 @@ if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
         JOptionPane.showMessageDialog(null, "You have exceed 1.0. Please put number below than 1.0 !!");
             return;  // exit the method if the operator is already set
         }*/
-        
-        
         if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-        
+
         num1 = Double.parseDouble(t2.getText());
         t2.setText("");
-        operator="+";
+        operator = "+";
     }//GEN-LAST:event_badd1ActionPerformed
 
     private void b01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01ActionPerformed
-        
-        t2.setText(t2.getText()+"1");
+
+        t2.setText(t2.getText() + "1");
     }//GEN-LAST:event_b01ActionPerformed
 
     private void b00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b00ActionPerformed
-        
-         t2.setText(t2.getText()+"0");
+
+        t2.setText(t2.getText() + "0");
     }//GEN-LAST:event_b00ActionPerformed
 
     private void bback1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bback1ActionPerformed
-        
-        String str= t2.getText();
-        
-        t2.setText(str.substring(0,str.length()-1));
+
+        String str = t2.getText();
+
+        t2.setText(str.substring(0, str.length() - 1));
     }//GEN-LAST:event_bback1ActionPerformed
 
     private void b08ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b08ActionPerformed
-        
-        t2.setText(t2.getText()+"8");
+
+        t2.setText(t2.getText() + "8");
     }//GEN-LAST:event_b08ActionPerformed
 
     private void bdiv1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdiv1ActionPerformed
@@ -1133,43 +1132,43 @@ if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-        
+
         num1 = Double.parseDouble(t2.getText());
         t2.setText("");
-        operator="/";
+        operator = "/";
     }//GEN-LAST:event_bdiv1ActionPerformed
 
     private void bclear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclear1ActionPerformed
-        
+
         t2.setText("");
-        num1=0;
-        num2=0;
-        operator=null;
+        num1 = 0;
+        num2 = 0;
+        operator = null;
     }//GEN-LAST:event_bclear1ActionPerformed
 
     private void b02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b02ActionPerformed
-        
-        t2.setText(t2.getText()+"2");
+
+        t2.setText(t2.getText() + "2");
     }//GEN-LAST:event_b02ActionPerformed
 
     private void b07ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b07ActionPerformed
-        
-        t2.setText(t2.getText()+"7");
+
+        t2.setText(t2.getText() + "7");
     }//GEN-LAST:event_b07ActionPerformed
 
     private void bdot1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdot1ActionPerformed
-        
-        t2.setText(t2.getText()+".");
+
+        t2.setText(t2.getText() + ".");
     }//GEN-LAST:event_bdot1ActionPerformed
 
     private void b03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b03ActionPerformed
-        
-        t2.setText(t2.getText()+"3");
+
+        t2.setText(t2.getText() + "3");
     }//GEN-LAST:event_b03ActionPerformed
 
     private void b09ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b09ActionPerformed
-        
-        t2.setText(t2.getText()+"9");
+
+        t2.setText(t2.getText() + "9");
     }//GEN-LAST:event_b09ActionPerformed
 
     private void bsub1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsub1ActionPerformed
@@ -1178,15 +1177,15 @@ if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-        
+
         num1 = Double.parseDouble(t2.getText());
         t2.setText("");
-        operator="-";
+        operator = "-";
     }//GEN-LAST:event_bsub1ActionPerformed
 
     private void b05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b05ActionPerformed
-        
-        t2.setText(t2.getText()+"5");
+
+        t2.setText(t2.getText() + "5");
     }//GEN-LAST:event_b05ActionPerformed
 
     private void bmul1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmul1ActionPerformed
@@ -1198,99 +1197,100 @@ if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
 
         num1 = Double.parseDouble(t2.getText());
         t2.setText("");
-        operator="*";
+        operator = "*";
     }//GEN-LAST:event_bmul1ActionPerformed
 
     private void bequal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal1ActionPerformed
-        
-        String inputText = t2.getText();{
-       
-        // Print the values for debugging
-        System.out.println("num1: " + num1);
-        System.out.println("inputText: " + inputText);
 
-        num2 = Double.parseDouble(t2.getText());
-        // Check if num1 is equal to the input text
-        if (num1==0) {
-            JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
-            return;  // exit the method if num1 is equal to the input text
+        String inputText = t2.getText();
+        {
+
+            // Print the values for debugging
+            System.out.println("num1: " + num1);
+            System.out.println("inputText: " + inputText);
+
+            num2 = Double.parseDouble(t2.getText());
+            // Check if num1 is equal to the input text
+            if (num1 == 0) {
+                JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
+                return;  // exit the method if num1 is equal to the input text
             }
-    
-        }        
 
-        double ans=0;
-       
-        if(operator=="+"){
-            ans = num1+num2;
-            
         }
-        if(operator=="-"){
-            ans = num1-num2;
+
+        double ans = 0;
+
+        if (operator == "+") {
+            ans = num1 + num2;
+
         }
-        if(operator=="*"){
-            ans = num1*num2;
-            
+        if (operator == "-") {
+            ans = num1 - num2;
         }
-        if(operator=="/"){
-            
+        if (operator == "*") {
+            ans = num1 * num2;
+
+        }
+        if (operator == "/") {
+
             // Check for division by zero
             if (num2 != 0) {
                 ans = num1 / num2;
             } else {
-            JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
-            // Handle the error as needed
-            return;
+                JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
+                // Handle the error as needed
+                return;
             }
         }
-        
+
         String str = Double.toString(ans);
         double doubleValue = Double.parseDouble(str);
 
         int decimalIndex = str.indexOf('.');
         int decimals = (decimalIndex != -1) ? str.length() - decimalIndex - 1 : 0;
 
-        if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2) {
+        // Check if the double value has zero after the decimal point
+        if (doubleValue % 1 != 0) {
+
+            if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2) {
+                JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+            }
+        }
+
+        if (ans > 1000) {
             JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
 
-
-        
-        
-        if(ans>1000){
-            JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
-        }
-        
         /*if(ans<0){
             JOptionPane.showMessageDialog(null,"The answer is below 0 !! Make sure that the answer is only in your syllabus.");
         }*/
-        
-        t2.setText(""+ans);
+        t2.setText("" + ans);
 
-        operator=null;
+        operator = null;
     }//GEN-LAST:event_bequal1ActionPerformed
 
     private void b04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b04ActionPerformed
-        
-        t2.setText(t2.getText()+"4");
+
+        t2.setText(t2.getText() + "4");
     }//GEN-LAST:event_b04ActionPerformed
 
     private void bdotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdotActionPerformed
-        
+
         JOptionPane.showMessageDialog(null, "This operation is not in your syllabus. Please choose another operation !! ");
-            return;  // exit
+        return;  // exit
         //t1.setText(t1.getText()+".");
     }//GEN-LAST:event_bdotActionPerformed
 
     private void b9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b9ActionPerformed
 
-        t1.setText(t1.getText()+"9");
+        t1.setText(t1.getText() + "9");
     }//GEN-LAST:event_b9ActionPerformed
 
     private void bdivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdivActionPerformed
-               
+
         JOptionPane.showMessageDialog(null, "This operation is not in your syllabus. Please choose another operation !! ");
-            return;  // exit
-            
+        return;  // exit
+
         /*if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
@@ -1302,131 +1302,131 @@ if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
     }//GEN-LAST:event_bdivActionPerformed
 
     private void bequalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequalActionPerformed
-        
-        String inputText = t1.getText();{
-       
-        // Print the values for debugging
-        System.out.println("num1: " + num1);
-        System.out.println("inputText: " + inputText);
 
-        num2 = Double.parseDouble(t1.getText());
-        // Check if num1 is equal to the input text
-        if (num1==0) {
-            JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
-            return;  // exit the method if num1 is equal to the input text
+        String inputText = t1.getText();
+        {
+
+            // Print the values for debugging
+            System.out.println("num1: " + num1);
+            System.out.println("inputText: " + inputText);
+
+            num2 = Double.parseDouble(t1.getText());
+            // Check if num1 is equal to the input text
+            if (num1 == 0) {
+                JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
+                return;  // exit the method if num1 is equal to the input text
             }
-    
+
         }
 
-        double ans=0;
-        
-        if(operator=="+"){
-            ans = num1+num2;
+        double ans = 0;
+
+        if (operator == "+") {
+            ans = num1 + num2;
         }
-        if(operator=="-"){
-            ans = num1-num2;
+        if (operator == "-") {
+            ans = num1 - num2;
         }
-        if(operator=="*"){
-            ans = num1*num2;
+        if (operator == "*") {
+            ans = num1 * num2;
         }
-        if(operator=="/"){
+        if (operator == "/") {
 
             // Check for division by zero
             if (num2 != 0) {
                 ans = num1 / num2;
             } else {
-            JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
-            // Handle the error as needed
-            return;
+                JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
+                // Handle the error as needed
+                return;
             }
         }
 
-        if(ans>=100.1){
-            JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+        if (ans >= 100.1) {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
-        
-        if(ans<0){
-            JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+
+        if (ans < 0) {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
-        
+
         t1.setText("" + ans);
     }//GEN-LAST:event_bequalActionPerformed
 
     private void baddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baddActionPerformed
-              
+
         if (Double.parseDouble(t1.getText()) == 0) {
             JOptionPane.showMessageDialog(null, "Please start with number 1 ");
             return;  // exit the method if the operator is already set
         }
-        
-         if (operator != null) {
+
+        if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-          
+
         num1 = Double.parseDouble(t1.getText());
         t1.setText("");
-        operator="+";
+        operator = "+";
     }//GEN-LAST:event_baddActionPerformed
 
     private void b0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b0ActionPerformed
 
-        t1.setText(t1.getText()+"0");
+        t1.setText(t1.getText() + "0");
     }//GEN-LAST:event_b0ActionPerformed
 
     private void bbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbackActionPerformed
-        
-        String str= t1.getText();
-        
-        t1.setText(str.substring(0,str.length()-1));
+
+        String str = t1.getText();
+
+        t1.setText(str.substring(0, str.length() - 1));
     }//GEN-LAST:event_bbackActionPerformed
 
     private void bclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclearActionPerformed
 
         t1.setText("");
-        num1=0;
-        num2=0;
-        operator=null;
+        num1 = 0;
+        num2 = 0;
+        operator = null;
     }//GEN-LAST:event_bclearActionPerformed
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
 
-        t1.setText(t1.getText()+"2");
+        t1.setText(t1.getText() + "2");
     }//GEN-LAST:event_b2ActionPerformed
 
     private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
 
-        t1.setText(t1.getText()+"3");
+        t1.setText(t1.getText() + "3");
     }//GEN-LAST:event_b3ActionPerformed
 
     private void bsubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsubActionPerformed
-        
+
         if (Double.parseDouble(t1.getText()) == 0) {
             JOptionPane.showMessageDialog(null, "Please start with number 1 ");
             return;  // exit the method if the operator is already set
         }
-        
+
         if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
         }
-        
+
         num1 = Double.parseDouble(t1.getText());
         t1.setText("");
-        operator="-";
+        operator = "-";
     }//GEN-LAST:event_bsubActionPerformed
 
     private void b5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5ActionPerformed
 
-        t1.setText(t1.getText()+"5");
+        t1.setText(t1.getText() + "5");
     }//GEN-LAST:event_b5ActionPerformed
 
     private void bmulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmulActionPerformed
 
-        
         JOptionPane.showMessageDialog(null, "This operation is not in your syllabus. Please choose another operation !! ");
-            return;  // exit
-            
+        return;  // exit
+
         /*if (operator != null) {
             JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
             return;  // exit the method if the operator is already set
@@ -1439,27 +1439,27 @@ if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
 
     private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
 
-        t1.setText(t1.getText()+"4");
+        t1.setText(t1.getText() + "4");
     }//GEN-LAST:event_b4ActionPerformed
 
     private void b6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6ActionPerformed
 
-        t1.setText(t1.getText()+"6");
+        t1.setText(t1.getText() + "6");
     }//GEN-LAST:event_b6ActionPerformed
 
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
 
-        t1.setText(t1.getText()+"1");
+        t1.setText(t1.getText() + "1");
     }//GEN-LAST:event_b1ActionPerformed
 
     private void b8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b8ActionPerformed
 
-        t1.setText(t1.getText()+"8");
+        t1.setText(t1.getText() + "8");
     }//GEN-LAST:event_b8ActionPerformed
 
     private void b7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b7ActionPerformed
 
-        t1.setText(t1.getText()+"7");
+        t1.setText(t1.getText() + "7");
     }//GEN-LAST:event_b7ActionPerformed
 
     /**
