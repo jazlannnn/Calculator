@@ -6,6 +6,7 @@
 package calculator;
 
 import javax.swing.JOptionPane;
+import java.math.BigDecimal;
 
 /**
  *
@@ -1054,11 +1055,17 @@ public class Calc extends javax.swing.JFrame {
             }
         }
         
-         if ((ans >= 0.1 && ans <= 1.0) || (ans >= 1.0 && ans % 1 == 0)) {
-        } else {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
-            // You may choose to clear the text field or handle it differently
-        }
+         String resultString = Double.toString(ans);
+
+// Check if the result has more than one decimal place
+if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
+    JOptionPane.showMessageDialog(null, "The answer has more than one decimal place! Make sure the result is in the range 0.1 to 0.9 with only one decimal place.");
+    // You may choose to clear the text field or handle it differently
+} else if (!(ans >= 0.1 && ans < 1.0)) {
+    JOptionPane.showMessageDialog(null, "The answer is outside the allowed range! Make sure that the answer is in the range 0.1 to 0.9 with only one decimal place.");
+    // You may choose to clear the text field or handle it differently
+}
+         
         
         if(ans>=10000.1){
             JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
@@ -1236,21 +1243,20 @@ public class Calc extends javax.swing.JFrame {
             }
         }
         
+String str = Double.toString(ans);
+double doubleValue = Double.parseDouble(str);
+
+int decimalIndex = str.indexOf('.');
+int decimals = (decimalIndex != -1) ? str.length() - decimalIndex - 1 : 0;
+
+if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2) {
+    JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+}
+
+
         
-        if ((ans >= 0.1 && ans <= 1.0) || (ans >= 1.0 && ans % 1 == 0)) {
-            
-            double remainder = ans; // Get the remainder after division by 1
-            double answer = Math.floor(remainder * 10) / 10; // Extract the first decimal place
-            // Format the answer to display only one decimal point
-            String formattedAnswer = String.format("%.1f", answer);
-            t1.setText(formattedAnswer);
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
-            // You may choose to clear the text field or handle it differently
-        }
         
-        if(ans>=1000.1){
+        if(ans>1000){
             JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
         
@@ -1342,10 +1348,8 @@ public class Calc extends javax.swing.JFrame {
         if(ans<0){
             JOptionPane.showMessageDialog(null,"The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
-
-        t1.setText(""+ans);
-
-        operator=null;
+        
+        t1.setText("" + ans);
     }//GEN-LAST:event_bequalActionPerformed
 
     private void baddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baddActionPerformed
