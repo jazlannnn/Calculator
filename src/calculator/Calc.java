@@ -1243,15 +1243,15 @@ if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
             }
         }
         
-String str = Double.toString(ans);
-double doubleValue = Double.parseDouble(str);
+        String str = Double.toString(ans);
+        double doubleValue = Double.parseDouble(str);
 
-int decimalIndex = str.indexOf('.');
-int decimals = (decimalIndex != -1) ? str.length() - decimalIndex - 1 : 0;
+        int decimalIndex = str.indexOf('.');
+        int decimals = (decimalIndex != -1) ? str.length() - decimalIndex - 1 : 0;
 
-if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2) {
-    JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
-}
+        if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2) {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+        }
 
 
         
