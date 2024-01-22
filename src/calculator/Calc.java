@@ -1057,7 +1057,7 @@ public class Calc extends javax.swing.JFrame {
             }
         }
 
-        String resultString = Double.toString(ans);
+        /*String resultString = Double.toString(ans);
 
 // Check if the result has more than one decimal place
         if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
@@ -1066,8 +1066,28 @@ public class Calc extends javax.swing.JFrame {
         } else if (!(ans >= 0.1 && ans < 1.0)) {
             JOptionPane.showMessageDialog(null, "The answer is outside the allowed range! Make sure that the answer is in the range 0.1 to 0.9 with only one decimal place.");
             // You may choose to clear the text field or handle it differently
-        }
+        }*/
 
+        
+        String str = Double.toString(ans);
+        double doubleValue = Double.parseDouble(str);
+
+        int decimalIndex = str.indexOf('.');
+        int decimals = (decimalIndex != -1) ? str.length() - decimalIndex - 1 : 0;
+
+        // Check if the double value has zero after the decimal point
+        if (doubleValue % 1 != 0) {
+            
+            if (ans == 0.30000000000000004){
+                JOptionPane.showMessageDialog(null, "The answer is 0.3");
+            }
+
+            if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 3) {
+                JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus. Please ignore this message for the answer 0.3");
+            }
+                    
+        }
+        
         if (ans >= 10000.1) {
             JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
         }
@@ -1242,7 +1262,7 @@ public class Calc extends javax.swing.JFrame {
                 return;
             }
         }
-
+        
         String str = Double.toString(ans);
         double doubleValue = Double.parseDouble(str);
 
@@ -1251,9 +1271,15 @@ public class Calc extends javax.swing.JFrame {
 
         // Check if the double value has zero after the decimal point
         if (doubleValue % 1 != 0) {
-
-            if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2) {
+            
+              
+            if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2 && ans != 0.30000000000000004) {
                 JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+            } else if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2 && ans == 0.30000000000000004) {
+                JOptionPane.showMessageDialog(null, "The answer is 0.3");
+                System.out.println("Before clearing text field: " + t2.getText());
+                t2.setText("");  // Clear the text field
+                System.out.println("After clearing text field: " + t2.getText());
             }
         }
 
