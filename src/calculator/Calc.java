@@ -7,6 +7,11 @@ package calculator;
 
 import javax.swing.JOptionPane;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import javax.swing.JTextField;
 
 /**
  *
@@ -910,14 +915,20 @@ public class Calc extends javax.swing.JFrame {
 
     private void badd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd2ActionPerformed
 
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
+           String currentText = t3.getText();
+    int operatorCount = countOperators(currentText);
 
-        num1 = Double.parseDouble(t3.getText());
-        t3.setText("");
-        operator = "+";
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+    if (operatorCount < 2) {
+        t3.setText(t3.getText() + "+");
+    } else {
+        JOptionPane.showMessageDialog(null, "Only two operators are allowed.");
+    }
+    
+
     }//GEN-LAST:event_badd2ActionPerformed
 
     private void b001ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b001ActionPerformed
@@ -944,22 +955,30 @@ public class Calc extends javax.swing.JFrame {
 
     private void bdiv2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdiv2ActionPerformed
 
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
+           String currentText = t3.getText();
+            if (currentText.contains(".")) {
+        JOptionPane.showMessageDialog(null, "Division with decimal numbers is not allowed in Tahun 3.");
+        return;
+    }
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+    
+     if (!operatorEntered) {
+        t3.setText(t3.getText() + "/");
+        operatorEntered = true; // Set the flag indicating an operator has been entered
+    } else {
+        JOptionPane.showMessageDialog(null, "Only one division operation can be entered.");
+    }
 
-        num1 = Double.parseDouble(t3.getText());
-        t3.setText("");
-        operator = "/";
     }//GEN-LAST:event_bdiv2ActionPerformed
 
     private void bclear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclear2ActionPerformed
 
-        t3.setText("");
-        num1 = 0;
-        num2 = 0;
-        operator = null;
+       t3.setText("");
+    operatorEntered = false;
+    operandCount = 0;
     }//GEN-LAST:event_bclear2ActionPerformed
 
     private void b002ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b002ActionPerformed
@@ -989,16 +1008,30 @@ public class Calc extends javax.swing.JFrame {
 
     private void bsub2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsub2ActionPerformed
 
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
+           String currentText = t3.getText();
+    int operatorCount = countOperators(currentText);
 
-        num1 = Double.parseDouble(t3.getText());
-        t3.setText("");
-        operator = "-";
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+    if (operatorCount < 2) {
+        t3.setText(t3.getText() + "-");
+    } else {
+        JOptionPane.showMessageDialog(null, "Only two operators are allowed.");
+    }
+
     }//GEN-LAST:event_bsub2ActionPerformed
-
+private int countOperators(String text) {
+    int count = 0;
+    for (int i = 0; i < text.length(); i++) {
+        char c = text.charAt(i);
+        if (c == '+' || c == '-') {
+            count++;
+        }
+    }
+    return count;
+}
     private void b005ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b005ActionPerformed
 
         t3.setText(t3.getText() + "5");
@@ -1006,97 +1039,140 @@ public class Calc extends javax.swing.JFrame {
 
     private void bmul2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmul2ActionPerformed
 
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
-
-        num1 = Double.parseDouble(t3.getText());
-        t3.setText("");
-        operator = "*";
-    }//GEN-LAST:event_bmul2ActionPerformed
-
-    private void bequal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal2ActionPerformed
-
-        String inputText = t3.getText();
-        {
-
-            // Print the values for debugging
-            System.out.println("num1: " + num1);
-            System.out.println("inputText: " + inputText);
-
-            num2 = Double.parseDouble(t3.getText());
-            // Check if num1 is equal to the input text
-            if (num1 == 0) {
-                JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
-                return;  // exit the method if num1 is equal to the input text
-            }
-
-        }
-
-        double ans = 0;
-
-        if (operator == "+") {
-            ans = num1 + num2;
-        }
-        if (operator == "-") {
-            ans = num1 - num2;
-        }
-        if (operator == "*") {
-            ans = num1 * num2;
-        }
-        if (operator == "/") {
-
-            // Check for division by zero
-            if (num2 != 0) {
-                ans = num1 / num2;
-            } else {
-                JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
-                // Handle the error as needed
+        String currentText = t3.getText();
+        if (currentText.contains(".")) {
+        JOptionPane.showMessageDialog(null, "Multiplication with decimal numbers is not allowed in Tahun 3.");
+        return;
+    }
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+        if (!operatorEntered) {
+        t3.setText(t3.getText() + "*");
+        operatorEntered = true; // Set the flag indicating an operator has been entered
+    } else {
+        JOptionPane.showMessageDialog(null, "Only one multiplication operation can be entered.");
+    }
+         String[] parts = currentText.split("[+\\-*/]"); // Split based on operators
+        if (parts.length > 0) {
+        String lastNumber = parts[parts.length - 1];
+        try {
+            double num = Double.parseDouble(lastNumber);
+            if (num > 1000) {
+                JOptionPane.showMessageDialog(null, "Cannot multiply numbers greater than 1000.");
                 return;
             }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid number format.");
+            return;
         }
+    }
+    }//GEN-LAST:event_bmul2ActionPerformed
+private boolean handleMultiply2(JTextField textField) {
+    String currentText = textField.getText();
+    String[] parts = currentText.split("[+\\-*/]");
 
-        /*String resultString = Double.toString(ans);
-
-// Check if the result has more than one decimal place
-        if (resultString.contains(".") && resultString.split("\\.")[1].length() > 1) {
-            JOptionPane.showMessageDialog(null, "The answer has more than one decimal place! Make sure the result is in the range 0.1 to 0.9 with only one decimal place.");
-            // You may choose to clear the text field or handle it differently
-        } else if (!(ans >= 0.1 && ans < 1.0)) {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range! Make sure that the answer is in the range 0.1 to 0.9 with only one decimal place.");
-            // You may choose to clear the text field or handle it differently
-        }*/
-
-        
-        String str = Double.toString(ans);
-        double doubleValue = Double.parseDouble(str);
-
-        int decimalIndex = str.indexOf('.');
-        int decimals = (decimalIndex != -1) ? str.length() - decimalIndex - 1 : 0;
-
-        // Check if the double value has zero after the decimal point
-        if (doubleValue % 1 != 0) {
-            
-            if (ans == 0.30000000000000004){
-                JOptionPane.showMessageDialog(null, "The answer is 0.3");
+    for (String part : parts) {
+        try {
+            double num = Double.parseDouble(part);
+            if (num > 1000) {
+                JOptionPane.showMessageDialog(null, "Cannot multiply numbers greater than 1000 in Tahun 3.");
+                return false;
             }
-
-            if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 3) {
-                JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus. Please ignore this message for the answer 0.3");
-            }
-                    
+        } catch (NumberFormatException e) {
+            // Handle invalid number format if necessary
         }
-        
-        if (ans >= 10000.1) {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
-        }
+    }
+    return true;
+}
+    private void bequal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal2ActionPerformed
 
-        t3.setText("" + ans);
+    String currentText = t3.getText();
 
-        operator = null;
+    if (currentText.contains("*") && !handleMultiply2(t3)) {
+        return; // Stop further execution if multiplication check fails
+    }
+
+    if (invalidDecimalRange1(currentText)) {
+        JOptionPane.showMessageDialog(null, "Decimal numbers must be between 0.01 and  0.99 in Tahun 3.");
+        return;
+    }
+
+    if (currentText.contains("/")) {
+        handleDivision1(t3);
+    } else {
+        calculateResult1(t3);
+    }
     }//GEN-LAST:event_bequal2ActionPerformed
+    private void handleDivision1(JTextField textField) {
+    String currentText = textField.getText();
+    String[] parts = currentText.split("/");
+    if (parts.length == 2) {
+        try {
+            double firstNum = Double.parseDouble(parts[0]);
+            double secondNum = Double.parseDouble(parts[1]);
 
+            if (secondNum == 0) {
+                JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
+                return;
+            }
+            if (firstNum > 10000) {
+                    JOptionPane.showMessageDialog(null, "Cannot divide by numbers greater than 10000.");
+                    return;
+                }
+            if (secondNum > 1000) {
+                    JOptionPane.showMessageDialog(null, "Cannot divide by numbers greater than 10000.");
+                    return;
+                }
+
+            double result = firstNum / secondNum;
+            int remainder = (int)firstNum % (int)secondNum;
+
+            textField.setText(String.format("%.2f Remainder %d", result, remainder));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid number format.");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid division format.");
+    }
+}
+
+private boolean invalidDecimalRange1(String text) {
+    String[] parts = text.split("[+\\-*/]");
+    for (String part : parts) {
+        if (part.contains(".")) {
+            double number = Double.parseDouble(part);
+            if (number < 0.01 || number > 0.99) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+private void calculateResult1(JTextField textField) {
+    String expression = textField.getText();
+    ScriptEngineManager mgr = new ScriptEngineManager();
+    ScriptEngine engine = mgr.getEngineByName("JavaScript");
+
+    try {
+        Object result = engine.eval(expression);
+        double resultNumber = new BigDecimal(String.valueOf(result)).setScale(3, RoundingMode.HALF_UP).doubleValue();
+        
+        if (resultNumber < 0 || resultNumber > 10000) {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range!");
+            textField.setText("");
+        } else {
+            textField.setText(String.valueOf(resultNumber));
+        }
+    } catch (ScriptException e) {
+        textField.setText("Error");
+        JOptionPane.showMessageDialog(null, "Invalid expression.");
+    } catch (NumberFormatException e) {
+        textField.setText("Error");
+        JOptionPane.showMessageDialog(null, "Error in number format.");
+    }
+}
     private void b004ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b004ActionPerformed
 
         t3.setText(t3.getText() + "4");
@@ -1106,24 +1182,55 @@ public class Calc extends javax.swing.JFrame {
 
         t2.setText(t2.getText() + "6");
     }//GEN-LAST:event_b06ActionPerformed
+private boolean lastCharacterIsOperator(String text) {
+    if(text.isEmpty()) return false;
+    char lastChar = text.charAt(text.length() - 1);
+    return lastChar == '+' || lastChar == '-' || lastChar == '*' || lastChar == '/';
+}
+boolean operatorEntered = false;
 
     private void badd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badd1ActionPerformed
+ String currentText = t2.getText();
+    int operatorCount = countOperators(currentText, '+');
+    
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+    if (operatorCount < 2 && (operatorCount == 0 || onlyContainsOperator(currentText, '+'))) {
+        t2.setText(t2.getText() + "+");
+    } else {
+        JOptionPane.showMessageDialog(null, "Only two addition operations can be entered.");
+    }
+    if (currentText.contains("+") && currentText.contains("-")) {
+        JOptionPane.showMessageDialog(null, "Only one type of operator is allowed."); 
+    } 
+        
+    
+    
 
-
-        /*if(Double.parseDouble(t2.getText()) >= 0.9){
-        JOptionPane.showMessageDialog(null, "You have exceed 1.0. Please put number below than 1.0 !!");
-            return;  // exit the method if the operator is already set
-        }*/
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
-
-        num1 = Double.parseDouble(t2.getText());
-        t2.setText("");
-        operator = "+";
     }//GEN-LAST:event_badd1ActionPerformed
+    private int countOperators(String text, char operator) {
+    int count = 0;
+    for (int i = 0; i < text.length(); i++) {
+        if (text.charAt(i) == operator) {
+            count++;
+        }
+    }
+    return count;
+}
 
+private boolean onlyContainsOperator(String text, char operator) {
+    for (int i = 0; i < text.length(); i++) {
+        char c = text.charAt(i);
+        if (c == '+' || c == '-' || c == '*' || c == '/') {
+            if (c != operator) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
     private void b01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b01ActionPerformed
 
         t2.setText(t2.getText() + "1");
@@ -1147,23 +1254,30 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b08ActionPerformed
 
     private void bdiv1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdiv1ActionPerformed
+String currentText = t2.getText();
+    if (currentText.contains(".")) {
+        JOptionPane.showMessageDialog(null, "Division with decimal numbers is not allowed in Tahun 2.");
+        return;
+    }
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+    
+     if (!operatorEntered) {
+        t2.setText(t2.getText() + "/");
+        operatorEntered = true; // Set the flag indicating an operator has been entered
+    } else {
+        JOptionPane.showMessageDialog(null, "Only one division operation can be entered.");
+    }
 
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
-
-        num1 = Double.parseDouble(t2.getText());
-        t2.setText("");
-        operator = "/";
     }//GEN-LAST:event_bdiv1ActionPerformed
 
     private void bclear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclear1ActionPerformed
-
-        t2.setText("");
-        num1 = 0;
-        num2 = 0;
-        operator = null;
+t2.setText("");
+    operatorEntered = false;
+    operandCount = 0;
+        
     }//GEN-LAST:event_bclear1ActionPerformed
 
     private void b02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b02ActionPerformed
@@ -1193,14 +1307,18 @@ public class Calc extends javax.swing.JFrame {
 
     private void bsub1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsub1ActionPerformed
 
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
+         String currentText = t2.getText();
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+    if (!currentText.contains("+") && !currentText.contains("-") && !currentText.contains("*") && !currentText.contains("/")) {
+        t2.setText(currentText + "-");
+    } else {
+        JOptionPane.showMessageDialog(null, "Only one type of operator is allowed.");
+    }
+    
 
-        num1 = Double.parseDouble(t2.getText());
-        t2.setText("");
-        operator = "-";
     }//GEN-LAST:event_bsub1ActionPerformed
 
     private void b05ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b05ActionPerformed
@@ -1209,92 +1327,137 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_b05ActionPerformed
 
     private void bmul1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmul1ActionPerformed
-
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
-
-        num1 = Double.parseDouble(t2.getText());
-        t2.setText("");
-        operator = "*";
-    }//GEN-LAST:event_bmul1ActionPerformed
-
-    private void bequal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal1ActionPerformed
-
-        String inputText = t2.getText();
-        {
-
-            // Print the values for debugging
-            System.out.println("num1: " + num1);
-            System.out.println("inputText: " + inputText);
-
-            num2 = Double.parseDouble(t2.getText());
-            // Check if num1 is equal to the input text
-            if (num1 == 0) {
-                JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
-                return;  // exit the method if num1 is equal to the input text
-            }
-
-        }
-
-        double ans = 0;
-
-        if (operator == "+") {
-            ans = num1 + num2;
-
-        }
-        if (operator == "-") {
-            ans = num1 - num2;
-        }
-        if (operator == "*") {
-            ans = num1 * num2;
-
-        }
-        if (operator == "/") {
-
-            // Check for division by zero
-            if (num2 != 0) {
-                ans = num1 / num2;
-            } else {
-                JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
-                // Handle the error as needed
+String currentText = t2.getText();
+    if (currentText.contains(".")) {
+        JOptionPane.showMessageDialog(null, "Multiplication with decimal numbers is not allowed in Tahun 2.");
+        return;
+    }
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+            if (!operatorEntered) {
+        t2.setText(t2.getText() + "*");
+        operatorEntered = true; // Set the flag indicating an operator has been entered
+    } else {
+        JOptionPane.showMessageDialog(null, "Only one multiplication operation can be entered.");
+    }
+            String[] parts = currentText.split("[+\\-*/]"); // Split based on operators
+    if (parts.length > 0) {
+        String lastNumber = parts[parts.length - 1];
+        try {
+            double num = Double.parseDouble(lastNumber);
+            if (num > 10) {
+                JOptionPane.showMessageDialog(null, "Cannot multiply numbers greater than 10.");
                 return;
             }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid number format.");
+            return;
         }
-        
-        String str = Double.toString(ans);
-        double doubleValue = Double.parseDouble(str);
+    }
+    t2.setText(currentText + "*");
 
-        int decimalIndex = str.indexOf('.');
-        int decimals = (decimalIndex != -1) ? str.length() - decimalIndex - 1 : 0;
+    }//GEN-LAST:event_bmul1ActionPerformed
+    private boolean handleMultiply1(JTextField textField) {
+    String currentText = textField.getText();
+    String[] parts = currentText.split("[+\\-*/]");
 
-        // Check if the double value has zero after the decimal point
-        if (doubleValue % 1 != 0) {
-            
-              
-            if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2 && ans != 0.30000000000000004) {
-                JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
-            } else if (doubleValue < 0.1 || doubleValue >= 1.0 || decimals >= 2 && ans == 0.30000000000000004) {
-                JOptionPane.showMessageDialog(null, "The answer is 0.3");
-                System.out.println("Before clearing text field: " + t2.getText());
-                t2.setText("");  // Clear the text field
-                System.out.println("After clearing text field: " + t2.getText());
+    for (String part : parts) {
+        try {
+            double num = Double.parseDouble(part);
+            if (num > 10) {
+                JOptionPane.showMessageDialog(null, "Cannot multiply numbers greater than 10 in Tahun 2.");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            // Handle invalid number format if necessary
+        }
+    }
+    return true;
+}
+    private void bequal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal1ActionPerformed
+         String currentText = t2.getText();
+ 
+
+    if (currentText.contains("*") && !handleMultiply1(t2)) {
+        return; // Stop further execution if multiplication check fails
+    }
+    if (invalidDecimalRange(currentText)) {
+        JOptionPane.showMessageDialog(null, "Decimal numbers must be between 0.1 and 0.9 in Tahun 2.");
+        return;
+    }
+
+    if (currentText.contains("/")) {
+        handleDivision(t2);
+    } else  {
+        calculateResult(t2);
+    }
+    }//GEN-LAST:event_bequal1ActionPerformed
+    private void handleDivision(JTextField textField) {
+    String currentText = textField.getText();
+    String[] parts = currentText.split("/");
+    if (parts.length == 2) {
+        try {
+            double firstNum = Double.parseDouble(parts[0]);
+            double secondNum = Double.parseDouble(parts[1]);
+
+            if (secondNum == 0) {
+                JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
+                return;
+            }
+            if (secondNum > 10) {
+                    JOptionPane.showMessageDialog(null, "Cannot divide by numbers greater than 10.");
+                    return;
+                }
+
+            double result = firstNum / secondNum;
+            int remainder = (int)firstNum % (int)secondNum;
+
+            textField.setText(String.format("%.2f Remainder %d", result, remainder));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid number format.");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid division format.");
+    }
+}
+
+private boolean invalidDecimalRange(String text) {
+    String[] parts = text.split("[+\\-*/]");
+    for (String part : parts) {
+        if (part.contains(".")) {
+            double number = Double.parseDouble(part);
+            if (number < 0.1 || number > 0.9) {
+                return true;
             }
         }
+    }
+    return false;
+}
+private void calculateResult(JTextField textField) {
+    String expression = textField.getText();
+    ScriptEngineManager mgr = new ScriptEngineManager();
+    ScriptEngine engine = mgr.getEngineByName("JavaScript");
 
-        if (ans > 1000) {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
+    try {
+        Object result = engine.eval(expression);
+        double resultNumber = new BigDecimal(String.valueOf(result)).setScale(2, RoundingMode.HALF_UP).doubleValue();
+        
+        if (resultNumber < 0 || resultNumber > 1000) {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range!");
+            textField.setText("");
+        } else {
+            textField.setText(String.valueOf(resultNumber));
         }
-
-        /*if(ans<0){
-            JOptionPane.showMessageDialog(null,"The answer is below 0 !! Make sure that the answer is only in your syllabus.");
-        }*/
-        t2.setText("" + ans);
-
-        operator = null;
-    }//GEN-LAST:event_bequal1ActionPerformed
-
+    } catch (ScriptException e) {
+        textField.setText("Error");
+        JOptionPane.showMessageDialog(null, "Invalid expression.");
+    } catch (NumberFormatException e) {
+        textField.setText("Error");
+        JOptionPane.showMessageDialog(null, "Error in number format.");
+    }
+}
     private void b04ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b04ActionPerformed
 
         t2.setText(t2.getText() + "4");
@@ -1329,76 +1492,88 @@ public class Calc extends javax.swing.JFrame {
 
     private void bequalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequalActionPerformed
 
-        String inputText = t1.getText();
-        {
+        String expression = t1.getText();
+    int operatorCount = countOperators1(expression);
 
-            // Print the values for debugging
-            System.out.println("num1: " + num1);
-            System.out.println("inputText: " + inputText);
+    // Check if there is more than one operator or an invalid operator in the expression
+    if (operatorCount > 1 || containsInvalidOperator(expression)) {
+        JOptionPane.showMessageDialog(null, "Only one operator (addition or subtraction) is allowed.");
+        return;
+    }
 
-            num2 = Double.parseDouble(t1.getText());
-            // Check if num1 is equal to the input text
-            if (num1 == 0) {
-                JOptionPane.showMessageDialog(null, "Please enter a second value before pressing '='.");
-                return;  // exit the method if num1 is equal to the input text
-            }
+    ScriptEngineManager mgr = new ScriptEngineManager();
+    ScriptEngine engine = mgr.getEngineByName("JavaScript");
 
+    try {
+        // Evaluate the expression
+        Object result = engine.eval(expression);
+
+        // Convert result to a number and format it
+        double resultNumber = new BigDecimal(String.valueOf(result)).setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+        // Check for negative results or results outside the syllabus range
+        if (resultNumber < 0 || resultNumber > 100) {
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range! Please stay within the syllabus limits.");
+            t1.setText(""); // Clear the text field
+        } else {
+            // Display the result
+            t1.setText(String.valueOf(resultNumber));
         }
-
-        double ans = 0;
-
-        if (operator == "+") {
-            ans = num1 + num2;
-        }
-        if (operator == "-") {
-            ans = num1 - num2;
-        }
-        if (operator == "*") {
-            ans = num1 * num2;
-        }
-        if (operator == "/") {
-
-            // Check for division by zero
-            if (num2 != 0) {
-                ans = num1 / num2;
-            } else {
-                JOptionPane.showMessageDialog(null, "Cannot divide by zero.");
-                // Handle the error as needed
-                return;
-            }
-        }
-
-        if (ans >= 100.1) {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
-        }
-
-        if (ans < 0) {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range !! Make sure that the answer is only in your syllabus.");
-        }
-
-        t1.setText("" + ans);
+    } catch (ScriptException e) {
+        t1.setText("Error");
+        JOptionPane.showMessageDialog(null, "Invalid expression.");
+    } catch (NumberFormatException e) {
+        t1.setText("Error");
+        JOptionPane.showMessageDialog(null, "Error in number format.");
+    }
     }//GEN-LAST:event_bequalActionPerformed
+    private int countOperators1(String text) {
+    int count = 0;
+    for (int i = 0; i < text.length(); i++) {
+        char c = text.charAt(i);
+        if (c == '+' || c == '-') {
+            count++;
+        }
+    }
+    return count;
+}
 
+// Helper method to check for invalid operators (other than + and -)
+private boolean containsInvalidOperator(String text) {
+    for (int i = 0; i < text.length(); i++) {
+        char c = text.charAt(i);
+        if (c == '*' || c == '/') {
+            return true;
+        }
+    }
+    return false;
+}
     private void baddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baddActionPerformed
 
-        if (Double.parseDouble(t1.getText()) == 0) {
-            JOptionPane.showMessageDialog(null, "Please start with number 1 ");
-            return;  // exit the method if the operator is already set
-        }
-
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
-
-        num1 = Double.parseDouble(t1.getText());
-        t1.setText("");
-        operator = "+";
+       String currentText = t1.getText();
+    int operatorCount = countOperators(currentText, '+');
+    
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+    if (operatorCount < 1 && (operatorCount == 0 || onlyContainsOperator(currentText, '+'))) {
+        t1.setText(t1.getText() + "+");
+    } else {
+        JOptionPane.showMessageDialog(null, "Only two addition operations can be entered.");
+    }
+    if (!currentText.contains("+") && !currentText.contains("-")) {
+        t1.setText(currentText + "+");
+    } else {
+        JOptionPane.showMessageDialog(null, "Only one type of operator is allowed.");
+    }
+    
     }//GEN-LAST:event_baddActionPerformed
+int operandCount = 0;
 
     private void b0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b0ActionPerformed
 
-        t1.setText(t1.getText() + "0");
+          t1.setText(t1.getText() + "0");
     }//GEN-LAST:event_b0ActionPerformed
 
     private void bbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbackActionPerformed
@@ -1410,10 +1585,9 @@ public class Calc extends javax.swing.JFrame {
 
     private void bclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclearActionPerformed
 
-        t1.setText("");
-        num1 = 0;
-        num2 = 0;
-        operator = null;
+       t1.setText("");
+    operatorEntered = false;
+    operandCount = 0;
     }//GEN-LAST:event_bclearActionPerformed
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
@@ -1428,19 +1602,17 @@ public class Calc extends javax.swing.JFrame {
 
     private void bsubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsubActionPerformed
 
-        if (Double.parseDouble(t1.getText()) == 0) {
-            JOptionPane.showMessageDialog(null, "Please start with number 1 ");
-            return;  // exit the method if the operator is already set
-        }
-
-        if (operator != null) {
-            JOptionPane.showMessageDialog(null, "Operator already set. Please press '=' button. ");
-            return;  // exit the method if the operator is already set
-        }
-
-        num1 = Double.parseDouble(t1.getText());
-        t1.setText("");
-        operator = "-";
+        String currentText = t1.getText();
+    if (currentText.isEmpty() || lastCharacterIsOperator(currentText)) {
+        JOptionPane.showMessageDialog(null, "Please enter a number before adding an operator.");
+        return;
+    }
+    t1.setText(currentText + "-");
+     if (!currentText.contains("+") && !currentText.contains("-")) {
+        t1.setText(currentText + "-");
+    } else {
+        JOptionPane.showMessageDialog(null, "Only one type of operator is allowed.");
+    }
     }//GEN-LAST:event_bsubActionPerformed
 
     private void b5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b5ActionPerformed
