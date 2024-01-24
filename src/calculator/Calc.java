@@ -972,6 +972,22 @@ public class Calc extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Only one division operation can be entered.");
     }
 
+     
+            String[] parts = currentText.split("[+\\-*/]"); // Split based on operators
+    if (parts.length > 0) {
+        String lastNumber = parts[parts.length - 1];
+        try {
+            double num = Double.parseDouble(lastNumber);
+            if (num > 10000) {
+                JOptionPane.showMessageDialog(null, "Cannot divide numbers greater than 10000.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid number format.");
+            return;
+        }
+    }
+    
     }//GEN-LAST:event_bdiv2ActionPerformed
 
     private void bclear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclear2ActionPerformed
@@ -1160,7 +1176,7 @@ private void calculateResult1(JTextField textField) {
         double resultNumber = new BigDecimal(String.valueOf(result)).setScale(3, RoundingMode.HALF_UP).doubleValue();
         
         if (resultNumber < 0 || resultNumber > 10000) {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range!");
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range! Please stay within the syllabus limits.");
             textField.setText("");
         } else {
             textField.setText(String.valueOf(resultNumber));
@@ -1270,7 +1286,22 @@ String currentText = t2.getText();
     } else {
         JOptionPane.showMessageDialog(null, "Only one division operation can be entered.");
     }
-
+         String[] parts = currentText.split("[+\\-*/]"); // Split based on operators
+    if (parts.length > 0) {
+        String lastNumber = parts[parts.length - 1];
+        try {
+            double num = Double.parseDouble(lastNumber);
+            if (num > 100) {
+                JOptionPane.showMessageDialog(null, "Cannot divide numbers greater than 100.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid number format.");
+            return;
+        }
+    }
+     
+     
     }//GEN-LAST:event_bdiv1ActionPerformed
 
     private void bclear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bclear1ActionPerformed
@@ -1445,7 +1476,7 @@ private void calculateResult(JTextField textField) {
         double resultNumber = new BigDecimal(String.valueOf(result)).setScale(2, RoundingMode.HALF_UP).doubleValue();
         
         if (resultNumber < 0 || resultNumber > 1000) {
-            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range!");
+            JOptionPane.showMessageDialog(null, "The answer is outside the allowed range! Please stay within the syllabus limits.");
             textField.setText("");
         } else {
             textField.setText(String.valueOf(resultNumber));
@@ -1559,9 +1590,8 @@ private boolean containsInvalidOperator(String text) {
     }
     if (operatorCount < 1 && (operatorCount == 0 || onlyContainsOperator(currentText, '+'))) {
         t1.setText(t1.getText() + "+");
-    } else {
-        JOptionPane.showMessageDialog(null, "Only two addition operations can be entered.");
-    }
+    } 
+    
     if (!currentText.contains("+") && !currentText.contains("-")) {
         t1.setText(currentText + "+");
     } else {

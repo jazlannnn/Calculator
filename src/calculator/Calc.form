@@ -99,7 +99,7 @@
               <Font name="Verdana" size="16" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="DSKP Kalkulator"/>
+            <Property name="text" type="java.lang.String" value="KEERA Calculator"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -272,6 +272,9 @@
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="t1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="b7">
               <Properties>
