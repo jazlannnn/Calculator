@@ -1164,7 +1164,7 @@ private boolean invalidDecimalRange1(String text) {
                 JOptionPane.showMessageDialog(null, "Decimal numbers must have only two decimal places in Tahun 3.");
                 return true;
             }
-            if (number < 0.01 || number > 0.99) {
+            if (number < 0.01 || number > 0.99 || number > 1) {
                 return true;
             }
         }
@@ -1469,7 +1469,7 @@ private boolean invalidDecimalRange(String text) {
                 JOptionPane.showMessageDialog(null, "Decimal numbers must have only one decimal place in Tahun 2.");
                 return true;
             }
-            if (number < 0.1 || number > 0.9) {
+            if (number < 0.1 || number > 0.9  || number > 1) {
                 return true;
             }
         }
