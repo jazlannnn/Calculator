@@ -1159,6 +1159,11 @@ private boolean invalidDecimalRange1(String text) {
     for (String part : parts) {
         if (part.contains(".")) {
             double number = Double.parseDouble(part);
+            String decimalPart = part.substring(part.indexOf(".") + 1);
+            if (decimalPart.length() > 2) {
+                JOptionPane.showMessageDialog(null, "Decimal numbers must have only two decimal places in Tahun 3.");
+                return true;
+            }
             if (number < 0.01 || number > 0.99) {
                 return true;
             }
@@ -1459,6 +1464,11 @@ private boolean invalidDecimalRange(String text) {
     for (String part : parts) {
         if (part.contains(".")) {
             double number = Double.parseDouble(part);
+            String decimalPart = part.substring(part.indexOf(".") + 1);
+            if (decimalPart.length() > 1) {
+                JOptionPane.showMessageDialog(null, "Decimal numbers must have only one decimal place in Tahun 2.");
+                return true;
+            }
             if (number < 0.1 || number > 0.9) {
                 return true;
             }
