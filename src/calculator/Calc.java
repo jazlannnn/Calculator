@@ -1105,6 +1105,40 @@ private boolean handleMultiply2(JTextField textField) {
     private void bequal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bequal2ActionPerformed
 
     String currentText = t3.getText();
+    String[] numbers = currentText.split("[+\\-]");
+
+    // Check if the operation involves a whole number and a decimal number
+    boolean involvesWholeAndDecimal = false;
+    for (int i = 0; i < numbers.length; i++) {
+        for (int j = i + 1; j < numbers.length; j++) {
+            if (isWholeNumber(numbers[i]) != isWholeNumber(numbers[j])) {
+                involvesWholeAndDecimal = true;
+                break;
+            }
+        }
+        if (involvesWholeAndDecimal) {
+            break;
+        }
+    }
+
+    if (involvesWholeAndDecimal) {
+        JOptionPane.showMessageDialog(null, "Operation involving a whole number and a decimal is not allowed.");
+        return;
+    }
+
+    if (!checkDecimalConstraints(numbers)) {
+        JOptionPane.showMessageDialog(null, "Decimals must be between 0.01 and 0.99.");
+        return;
+    }
+
+    if (currentText.contains("*") && !handleMultiply2(t3)) {
+        return; // Stop further execution if multiplication check fails
+    }
+
+    if (invalidDecimalRange1(currentText)) {
+        JOptionPane.showMessageDialog(null, "Decimal numbers must be between 0.01 and  0.99 in Tahun 3.");
+        return;
+    }
 
     if (currentText.contains("*") && !handleMultiply2(t3)) {
         return; // Stop further execution if multiplication check fails
@@ -1164,13 +1198,43 @@ private boolean invalidDecimalRange1(String text) {
                 JOptionPane.showMessageDialog(null, "Decimal numbers must have only two decimal places in Tahun 3.");
                 return true;
             }
-            if (number < 0.01 || number > 0.99 || number > 1) {
+            if (number < 0.01 || number > 0.99) {
                 return true;
             }
         }
     }
     return false;
 }
+private boolean isDecimal(String number) {
+    return number.contains(".");
+}
+private boolean isWholeNumber(String number) {
+    if (number.contains(".")) {
+        // Check if all decimal places are zero
+        String decimalPart = number.substring(number.indexOf(".") + 1);
+        return decimalPart.matches("0+");
+    }
+    return true; // No decimal point means it's a whole number
+}
+private boolean isValidDecimal(String number) {
+    if (!isDecimal(number)) return true; // valid if it's not a decimal
+    try {
+        double val = Double.parseDouble(number);
+        return val >= 0.01 && val <= 0.99;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+}
+
+private boolean checkDecimalConstraints(String[] numbers) {
+    for (String number : numbers) {
+        if (!isValidDecimal(number)) {
+            return false;
+        }
+    }
+    return true;
+}   
+
 private void calculateResult1(JTextField textField) {
     String expression = textField.getText();
     ScriptEngineManager mgr = new ScriptEngineManager();
@@ -1469,7 +1533,7 @@ private boolean invalidDecimalRange(String text) {
                 JOptionPane.showMessageDialog(null, "Decimal numbers must have only one decimal place in Tahun 2.");
                 return true;
             }
-            if (number < 0.1 || number > 0.9  || number > 1) {
+            if (number < 0.1 || number > 0.9) {
                 return true;
             }
         }
