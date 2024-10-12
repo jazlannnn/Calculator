@@ -5,6 +5,8 @@ Project Overview: In my 4th semester, my colleagues and I developed the KEERA Ca
 a user-friendly and interactive tool designed to help primary school students practice basic math operations based on the KSSR Matematik syllabus for Standards 1, 2, and 3.
 The application features three levels of difficulty, each aligned with a specific year of the Malaysian curriculum, allowing users to seamlessly switch between them.
 
+Technologies used : Java, Java Swing, NetBeans, GitHub
+
 Key Features:
 
 Level-Based Functionality: The calculator operates across three levels, each with its own rules and constraints that align with the learning objectives for Standards 1, 2, and 3 in the KSSR Matematik syllabus. 
