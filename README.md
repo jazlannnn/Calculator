@@ -21,7 +21,7 @@ Version Control: Employed GitHub for source code version control, facilitating e
 This project strengthened my skills in developing educational applications with interactive interfaces and integrating curriculum-specific logic. 
 It also enhanced my Java programming and desktop application development using NetBeans and Java Swing, while improving my understanding of version control with GitHub.
 
-## Screenshot of the calculator application
+## Screenshot of the Calculator Application
 
 ![Screenshot 2024-09-24 153016](https://github.com/user-attachments/assets/df003ee8-7c6a-4122-9cd1-2426c821ab5f)
 - User interface of the KEERA Calculator Application
