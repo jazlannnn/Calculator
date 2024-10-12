@@ -23,5 +23,8 @@ It also enhanced my Java programming and desktop application development using N
 
 
 ![Screenshot 2024-09-24 153016](https://github.com/user-attachments/assets/df003ee8-7c6a-4122-9cd1-2426c821ab5f)
-![Screenshot 2024-09-24 153107](https://github.com/user-attachments/assets/d9c0c02f-6e83-4f81-92bd-5322351a0b6d)
+- User interface of the KEERA Calculator Application
 
+  
+![Screenshot 2024-09-24 153107](https://github.com/user-attachments/assets/d9c0c02f-6e83-4f81-92bd-5322351a0b6d)
+- The category buttons
