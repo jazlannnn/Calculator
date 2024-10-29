@@ -1,7 +1,7 @@
 # KEERA Calculator Application
 
 
-Project Overview: In my 4th semester, my colleagues and I developed the KEERA Calculator Application, 
+Project Overview: In my 4th semester of Degree, my colleagues and I developed the KEERA Calculator Application, 
 a user-friendly and interactive tool designed to help primary school students practice basic math operations based on the KSSR Matematik syllabus for Standards 1, 2, and 3.
 The application features three levels of difficulty, each aligned with a specific year of the Malaysian curriculum, allowing users to seamlessly switch between them.
 
